@@ -21,7 +21,7 @@ if st.button("Scrape Jobs"):
         else:
             job_data = scrape_jobs_from_pages(url, site_type, start_page=1)
 
-        if not job_data.empty:
+        if isinstance(job_data, pd.DataFrame) and not job_data.empty:
             st.success("Data scraped successfully! Download below.")
             if site_type == "duapune":
                 columns = ["Title", "Company", "Location", "Job Type", "Expire"]
